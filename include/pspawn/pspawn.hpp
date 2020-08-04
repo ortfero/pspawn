@@ -142,6 +142,13 @@ namespace pspawn {
     }
     
     
+    bool running() const noexcept {
+      if(pi_.hProcess == nullptr)
+        return false;
+      return WaitForSingleObject(pi_.hProcess, 0) == WAIT_TIMEOUT;
+    }
+    
+    
     void wait() noexcept {
       if(pi_.hProcess == nullptr)
         return;
