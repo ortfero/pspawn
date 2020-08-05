@@ -186,7 +186,7 @@ namespace pspawn {
       if(pi_.hProcess == nullptr)
         return;
       if(WaitForSingleObject(pi_.hProcess, static_cast<DWORD>(terminate_timeout_.count())) == WAIT_TIMEOUT)
-        TerminateProcess(pi_.hProcess, -1);
+        TerminateProcess(pi_.hProcess, UINT(-1));
       CloseHandle(pi_.hProcess);
       CloseHandle(pi_.hThread);
     }
