@@ -154,6 +154,13 @@ namespace pspawn {
         return;
       WaitForSingleObject(pi_.hProcess, INFINITE);
     }
+
+
+    void terminate() noexcept {
+      if (pi_.hProcess == nullptr)
+        return;
+      TerminateProcess(pi_.hProcess, UINT(-1));
+    }
     
     
     template<class Rep, class Period>
